@@ -1,0 +1,22 @@
+package cn.xyr.lottery;
+
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * @className: cn.xyr.lottery.LotteryApplication
+ * @description: TODO
+ * @author: xyr
+ * @create: 2023-03-30 20:57
+ */
+@SpringBootApplication
+@Configurable
+@EnableDubbo
+public class LotteryApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(LotteryApplication.class,args);
+    }
+}

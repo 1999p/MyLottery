@@ -1,0 +1,21 @@
+package cn.xyr.lottery.infrastructure.dao;
+
+import cn.xyr.lottery.infrastructure.po.Strategy;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * @className: cn.xyr.lottery.infrastructure.dao.IStrategyDao
+ * @description: TODO
+ * @author: xyr
+ * @create: 2023-04-03 20:14
+ */
+@Mapper
+public interface IStrategyDao {
+
+    /**
+     * 查询策略
+     * @param strategyId 策略id
+     * @return 策略信息
+     */
+    Strategy queryStrategy(Long strategyId);
+}

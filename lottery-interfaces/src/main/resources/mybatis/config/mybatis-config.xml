@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!--以包为 单位，将包下所有的类型设置默认的类型别名，即类名且不区分大小写-->
+        <package name="cn.xyr.lottery.infrastructure.po"/>
+    </typeAliases>
+    <!--<mappers>-->
+    <!--    &lt;!&ndash;-->
+    <!--        以包为单位引入映射文件-->
+    <!--        要求：-->
+    <!--        1、mapper接口所在的包要和映射文件所在的包一致-->
+    <!--        2、mapper接口要和映射文件的名字一致-->
+    <!--    &ndash;&gt;-->
+    <!--    <package name="mybatis.mapper"/>-->
+    <!--</mappers>-->
+</configuration>
