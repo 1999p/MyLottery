@@ -12,12 +12,19 @@ import java.util.PriorityQueue;
  */
 public class Strategy {
 
+    /**
+     * 自增ID
+     */
     private Long id;
 
-    // 策略ID
+    /**
+     * 策略ID
+     */
     private Long strategyId;
 
-    // 策略描述
+    /**
+     * 策略描述
+     */
     private String strategyDesc;
 
     /**

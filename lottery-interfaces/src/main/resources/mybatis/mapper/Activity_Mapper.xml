@@ -3,11 +3,11 @@
 <mapper namespace="cn.xyr.lottery.infrastructure.dao.IActivityDao">
 
     <!--自定义映射，解决字段名和实体类中的属性名不一致问题-->
-    <resultMap id="activityMap" type="cn.xyr.lottery.infrastructure.po.Activity">
-        <id column="id" property="id"></id>
-        <result column="activity_id" property="activityId"></result>
-        <result column="activity_name" property="activityName"></result>
-        <result column="activity_desc" property="activityDesc"></result>
+    <resultMap id="activityMap" type="activity">
+        <id column="id" property="id"/>
+        <result column="activity_id" property="activityId"/>
+        <result column="activity_name" property="activityName"/>
+        <result column="activity_desc" property="activityDesc"/>
         <result column="begin_date_time" property="beginDateTime"/>
         <result column="end_date_time" property="endDateTime"/>
         <result column="stock_count" property="stockCount"/>
@@ -16,28 +16,20 @@
         <result column="creator" property="creator"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
-
     </resultMap>
+
     <insert id="insert" parameterType="activity">
-        insert into activity (activityId, activityName, activityDesc, beginDateTime, endDateTime, stockCount, takeCount,
-                              state, creator, createTime, updateTime)
-        values (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
-                #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now());
+        INSERT INTO activity
+        (activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
+         stock_count, take_count, state, creator, create_time, update_time)
+        VALUES (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
+                #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
     </insert>
     <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
-        select activityId,
-               activityName,
-               activityDesc,
-               beginDateTime,
-               endDateTime,
-               stockCount,
-               takeCount,
-               state,
-               creator,
-               createTime,
-               updateTime
+        select activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
+               stock_count, take_count, state, creator, create_time, update_time
         from activity
-        where activityId = #{activityId}
+        where activity_id = #{activityId};
     </select>
 
 

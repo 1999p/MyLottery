@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @className: cn.xyr.lottery.LotteryApplication
  * @description: TODO
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-03-30 20:57
  */
 @SpringBootApplication

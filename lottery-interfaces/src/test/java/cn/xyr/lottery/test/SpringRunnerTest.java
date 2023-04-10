@@ -1,5 +1,12 @@
 package cn.xyr.lottery.test;
 
+import cn.xyr.lottery.common.Constants;
+import cn.xyr.lottery.domain.award.model.req.GoodsReq;
+import cn.xyr.lottery.domain.award.model.res.DistributionRes;
+import cn.xyr.lottery.domain.award.service.factory.DistributionGoodsFactory;
+import cn.xyr.lottery.domain.award.service.goods.IDistributionGoods;
+import cn.xyr.lottery.domain.strategy.model.res.DrawResult;
+import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardInfo;
 import cn.xyr.lottery.infrastructure.dao.IActivityDao;
 import cn.xyr.lottery.infrastructure.po.Activity;
 import cn.xyr.lottery.domain.strategy.model.req.DrawReq;
@@ -16,6 +23,13 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 
+/**
+ * @className: cn.xyr.lottery.test.SpringRunnerTest
+ * @description: SpringBoot 单元测试
+ * @author: xyr
+ * @github: https://github.com/1999p
+ * @create: 2023-04-03 20:20
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringRunnerTest {
@@ -28,13 +42,39 @@ public class SpringRunnerTest {
     @Resource
     private IDrawExec drawExec;
 
+    @Resource
+    private DistributionGoodsFactory distributionGoodsFactory;
+
     @Test
     public void test_drawExec() {
-        drawExec.doDrawExec(new DrawReq("小邢", 10001L));
-        drawExec.doDrawExec(new DrawReq("JJ", 10001L));
-        drawExec.doDrawExec(new DrawReq("莉莉白", 10001L));
-        drawExec.doDrawExec(new DrawReq("彗星", 10001L));
-        drawExec.doDrawExec(new DrawReq("对角巷", 10001L));
+        drawExec.doDrawExec(new DrawReq("xyr", 10001L));
+        drawExec.doDrawExec(new DrawReq("小佳佳", 10001L));
+        drawExec.doDrawExec(new DrawReq("小蜗牛", 10001L));
+        drawExec.doDrawExec(new DrawReq("八杯水", 10001L));
+    }
+
+    @Test
+    public void test_award() {
+        // 执行抽奖
+        DrawResult drawResult = drawExec.doDrawExec(new DrawReq("小傅哥", 10001L));
+
+        // 判断抽奖结果
+        Integer drawState = drawResult.getDrawState();
+        if (Constants.DrawState.FAIL.getCode().equals(drawState)) {
+            logger.info("未中奖 DrawAwardInfo is null");
+            return;
+        }
+
+        // 封装发奖参数，orderId：2109313442431 为模拟ID，需要在用户参与领奖活动时生成
+        DrawAwardInfo drawAwardInfo = drawResult.getDrawAwardInfo();
+        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
+
+        // 根据 awardType 从抽奖工厂中获取对应的发奖服务
+        IDistributionGoods distributionGoodsService = distributionGoodsFactory.getDistributionGoodsService(drawAwardInfo.getAwardType());
+        DistributionRes distributionRes = distributionGoodsService.doDistribution(goodsReq);
+
+        logger.info("测试结果：{}", JSON.toJSONString(distributionRes));
+
     }
 
     @Test

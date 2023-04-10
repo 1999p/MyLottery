@@ -18,6 +18,7 @@ import javax.annotation.Resource;
  * @className: cn.xyr.lottery.interfaces.ActivityBooth
  * @description: TODO 活动展台
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-03-30 20:58
  */
 @Service

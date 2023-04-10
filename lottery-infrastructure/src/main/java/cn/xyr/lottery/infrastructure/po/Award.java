@@ -11,26 +11,40 @@ import java.util.Date;
  */
 public class Award {
 
-    //自增id
+    /**
+     * 自增id
+     */
     private Long id;
 
-    //奖品id;
+    /**
+     * 奖品id;
+     */
     private String awardId;
 
-    //奖品类型（文字描述，兑换码，优惠券，实物奖品暂无、闪暖池子）
+    /**
+     * 奖品类型（文字描述，兑换码，优惠券，实物奖品暂无、闪暖池子）
+     */
     private Integer awardType;
 
-    //奖品数量
+    /**
+     * 奖品数量
+     */
     private Integer awardCount;
 
-    //奖品名称
+    /**
+     * 奖品名称
+     */
     private String awardName;
 
-    //奖品内容「文字描述、Key、码」
+    /**
+     * 奖品内容「文字描述、Key、码」
+     */
     private String awardContent;
 
-    //创建时间
-    private Date creatTime;
+    /**
+     * 创建时间
+     */
+    private Date createTime;
 
     //更新时间
     private Date updateTime;
@@ -83,12 +97,12 @@ public class Award {
         this.awardContent = awardContent;
     }
 
-    public Date getCreatTime() {
-        return creatTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getUpdateTime() {
