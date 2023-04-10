@@ -4,7 +4,7 @@ import cn.xyr.lottery.common.Constants;
 import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardInfo;
 
 /**
- * @description: TODO
+ * @description: 抽奖结果
  * @author: xyr
  * @date: 2023-04-06 9:58
  * @Copyright: https://xxydnx.cn

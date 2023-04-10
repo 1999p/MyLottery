@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @className: cn.xyr.lottery.infrastructure.dao.IActivityDao
  * @description: TODO 创建活动表Dao信息，由interfaces模块调用infrastructure模块，完成CRUD操作
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-03-30 15:58
  */
 @Mapper

@@ -7,8 +7,9 @@ import java.util.List;
 
 /**
  * @className: cn.xyr.lottery.infrastructure.dao.IStrategyDetailDao
- * @description: TODO
+ * @description: 策略明细表DAO
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-04-03 20:20
  */
 @Mapper

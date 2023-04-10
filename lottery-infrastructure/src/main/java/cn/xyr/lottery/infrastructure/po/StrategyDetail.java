@@ -7,6 +7,7 @@ import java.util.Date;
  * @className: cn.xyr.lottery.infrastructure.po.Strategy
  * @description: TODO 策略明细
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-04-03 16:34
  */
 public class StrategyDetail {

@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
  * @className: cn.xyr.lottery.infrastructure.po.Strategy
  * @description: TODO
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-04-03 16:34
  */
 public class Strategy {
@@ -119,6 +120,5 @@ public class Strategy {
         this.updateTime = updateTime;
     }
 
-    new PriorityQueue<>();
 
 }

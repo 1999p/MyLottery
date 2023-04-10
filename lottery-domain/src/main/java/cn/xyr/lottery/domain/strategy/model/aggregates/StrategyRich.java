@@ -7,17 +7,23 @@ import java.util.List;
 
 /**
  * @className: cn.xyr.lottery.domain.strategy.model.aggregates.StrategyRich
- * @description: TODO
+ * @description:  抽奖策略聚合对象
  * @author: xyr
  * @create: 2023-04-03 16:29
  */
 public class StrategyRich {
 
-    // 策略ID
+    /**
+     * 策略ID
+     */
     private Long strategyId;
-    // 策略配置
+    /**
+     * 策略配置
+     */
     private Strategy strategy;
-    // 策略明细
+    /**
+     * 策略明细
+     */
     private List<StrategyDetail> strategyDetailList;
 
     public StrategyRich() {

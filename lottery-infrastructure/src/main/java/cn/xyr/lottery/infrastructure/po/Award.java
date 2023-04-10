@@ -6,6 +6,7 @@ import java.util.Date;
  * @className: cn.xyr.lottery.infrastructure.po.Award
  * @description: TODO
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-04-03 16:41
  */
 public class Award {

@@ -2,16 +2,20 @@ package cn.xyr.lottery.domain.strategy.model.req;
 
 /**
  * @className: cn.xyr.lottery.domain.strategy.model.req.DrawReq
- * @description: TODO
+ * @description: 抽奖请求对象
  * @author: xyr
  * @create: 2023-04-03 20:46
  */
 public class DrawReq {
 
-    // 用户ID
+    /**
+     * 用户ID
+     */
     private String uId;
 
-    // 策略ID
+    /**
+     * 策略ID
+     */
     private Long strategyId;
 
     public DrawReq() {

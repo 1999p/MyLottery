@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @className: cn.xyr.lottery.infrastructure.dao.IAwardDao
  * @description: TODO
  * @author: xyr
+ * @github: https://github.com/1999p
  * @create: 2023-04-03 16:53
  */
 @Mapper

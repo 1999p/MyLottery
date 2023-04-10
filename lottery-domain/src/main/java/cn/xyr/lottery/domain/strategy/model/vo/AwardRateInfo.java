@@ -3,17 +3,21 @@ package cn.xyr.lottery.domain.strategy.model.vo;
 import java.math.BigDecimal;
 
 /**
- * @description: TODO
+ * @description: 奖品概率信息，奖品编号、库存、概率
  * @author: xyr
  * @date: 2023-04-06 10:07
  * @Copyright: https://xxydnx.cn
  */
 public class AwardRateInfo {
 
-    // 奖品ID
+    /**
+     * 奖品ID
+      */
     private String awardId;
 
-    // 中奖概率
+    /**
+     * 中奖概率
+     */
     private BigDecimal awardRate;
 
     public AwardRateInfo() {
