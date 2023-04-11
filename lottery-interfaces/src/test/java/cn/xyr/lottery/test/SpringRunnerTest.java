@@ -48,15 +48,15 @@ public class SpringRunnerTest {
     @Test
     public void test_drawExec() {
         drawExec.doDrawExec(new DrawReq("xyr", 10001L));
-        drawExec.doDrawExec(new DrawReq("小佳佳", 10001L));
-        drawExec.doDrawExec(new DrawReq("小蜗牛", 10001L));
+        drawExec.doDrawExec(new DrawReq("献给莉莉丝", 10001L));
+        drawExec.doDrawExec(new DrawReq("再呈莉莉丝", 10001L));
         drawExec.doDrawExec(new DrawReq("八杯水", 10001L));
     }
 
     @Test
     public void test_award() {
         // 执行抽奖
-        DrawResult drawResult = drawExec.doDrawExec(new DrawReq("小傅哥", 10001L));
+        DrawResult drawResult = drawExec.doDrawExec(new DrawReq("熊本熊", 10001L));
 
         // 判断抽奖结果
         Integer drawState = drawResult.getDrawState();
@@ -80,8 +80,8 @@ public class SpringRunnerTest {
     @Test
     public void test_insert() {
         Activity activity = new Activity();
-        activity.setActivityId(100001L);
-        activity.setActivityName("测试活动");
+        activity.setActivityId(100002L);
+        activity.setActivityName("测试活动02");
         activity.setActivityDesc("仅用于插入数据测试");
         activity.setBeginDateTime(new Date());
         activity.setEndDateTime(new Date());

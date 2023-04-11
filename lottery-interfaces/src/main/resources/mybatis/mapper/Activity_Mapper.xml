@@ -26,8 +26,17 @@
                 #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
     </insert>
     <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
-        select activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-               stock_count, take_count, state, creator, create_time, update_time
+        select activity_id,
+               activity_name,
+               activity_desc,
+               begin_date_time,
+               end_date_time,
+               stock_count,
+               take_count,
+               state,
+               creator,
+               create_time,
+               update_time
         from activity
         where activity_id = #{activityId};
     </select>
