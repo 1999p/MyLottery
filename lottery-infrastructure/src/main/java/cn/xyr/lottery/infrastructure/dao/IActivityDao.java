@@ -1,5 +1,6 @@
 package cn.xyr.lottery.infrastructure.dao;
 
+import cn.xyr.lottery.domain.activity.model.vo.AlterStateVO;
 import cn.xyr.lottery.infrastructure.po.Activity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,7 +17,7 @@ public interface IActivityDao {
 
     /**
      * 插入活动信息
-     * @param req
+     * @param req 活动信息
      */
     void insert(Activity req);
 
@@ -26,5 +27,12 @@ public interface IActivityDao {
      * @return 活动信息
      */
     Activity queryActivityById(Long activityId);
+
+    /**
+     * 变更活动状态
+     * @param alterStateVO  [activityId、beforeState、afterState]
+     * @return
+     */
+    int alterState(AlterStateVO alterStateVO);
 
 }

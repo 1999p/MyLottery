@@ -1,4 +1,4 @@
-package cn.xyr.lottery.test;
+package cn.xyr.lottery.test.domain;
 
 import cn.xyr.lottery.domain.strategy.model.vo.AwardRateInfo;
 import cn.xyr.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;

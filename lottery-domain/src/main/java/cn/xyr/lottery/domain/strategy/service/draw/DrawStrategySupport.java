@@ -1,9 +1,8 @@
 package cn.xyr.lottery.domain.strategy.service.draw;
 
 import cn.xyr.lottery.domain.strategy.model.aggregates.StrategyRich;
+import cn.xyr.lottery.domain.strategy.model.vo.AwardBriefVO;
 import cn.xyr.lottery.domain.strategy.respository.IStrategyRepository;
-import cn.xyr.lottery.infrastructure.po.Award;
-
 import javax.annotation.Resource;
 
 /**
@@ -31,7 +30,7 @@ public class DrawStrategySupport extends DrawConfig{
      * @param awardId 奖品id
      * @return 中奖详情
      */
-    protected Award queryAwardInfoByAwardId(String awardId){
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId){
         return strategyRepository.queryAwardInfo(awardId);
     }
 }

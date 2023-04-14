@@ -31,8 +31,5 @@ public class DescGoods extends DistributionBase implements IDistributionGoods {
                 Constants.AwardState.SUCCESS.getInfo());
     }
 
-    @Override
-    public Integer getDistributionGoodsName() {
-        return Constants.AwardType.DESC.getCode();
-    }
+
 }

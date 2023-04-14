@@ -25,6 +25,11 @@
         VALUES (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
                 #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
     </insert>
+    <update id="alterState" parameterType="cn.xyr.lottery.domain.activity.model.vo.AlterStateVO">
+        update activity
+        set state = #{afterState}
+        where activity_id = #{activityId} AND state = #{beforeState};
+    </update>
     <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
         select activity_id,
                activity_name,

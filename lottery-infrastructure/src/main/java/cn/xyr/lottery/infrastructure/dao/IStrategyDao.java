@@ -14,9 +14,16 @@ import org.apache.ibatis.annotations.Mapper;
 public interface IStrategyDao {
 
     /**
-     * 查询策略
+     * 查询策略配置
      * @param strategyId 策略id
      * @return 策略信息
      */
     Strategy queryStrategy(Long strategyId);
+
+    /**
+     * 插入策略配置
+     * @param req 策略配置
+     */
+    void insert(Strategy req);
+
 }

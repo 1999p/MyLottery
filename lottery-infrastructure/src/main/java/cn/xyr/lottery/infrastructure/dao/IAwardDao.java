@@ -3,6 +3,8 @@ package cn.xyr.lottery.infrastructure.dao;
 import cn.xyr.lottery.infrastructure.po.Award;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @className: cn.xyr.lottery.infrastructure.dao.IAwardDao
  * @description: TODO
@@ -19,4 +21,10 @@ public interface IAwardDao {
      * @return 获奖信息
      */
     Award queryAwardInfo(String awardId);
+
+    /**
+     * 插入奖品配置
+     * @param list 奖品配置
+     */
+    void insertList(List<Award> list);
 }

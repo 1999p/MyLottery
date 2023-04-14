@@ -1,8 +1,8 @@
 package cn.xyr.lottery.domain.strategy.respository;
 
 import cn.xyr.lottery.domain.strategy.model.aggregates.StrategyRich;
-import cn.xyr.lottery.infrastructure.po.Award;
-import cn.xyr.lottery.infrastructure.po.Strategy;
+import cn.xyr.lottery.domain.strategy.model.vo.AwardBriefVO;
+
 
 import java.util.List;
 
@@ -14,9 +14,20 @@ import java.util.List;
  */
 public interface IStrategyRepository {
 
+
+    /**
+     * 查询抽奖策略聚合对象
+     * @param strategyId
+     * @return 抽奖策略聚合对象
+     */
     StrategyRich queryStrategyRich(Long strategyId);
 
-    Award queryAwardInfo(String awardId);
+    /**
+     * 查询奖品信息
+     * @param awardId 奖品Id
+     * @return 奖品信息
+     */
+    AwardBriefVO queryAwardInfo(String awardId);
 
 
     /**

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @className: cn.xyr.lottery.common.Result
- * @description: TODO
+ * @description: TODO 统一返回对象中，Code码、Info描述
  * @author: xyr
  * @create: 2023-03-30 21:12
  */
@@ -16,8 +16,8 @@ public class Result implements Serializable {
 
     private String info;
 
-    public static Result buildResult(String code, String info) {
-        return new Result(code,info);
+    public static Result buildResult(Constants.ResponseCode code,String info) {
+        return new Result(code.getCode(),info);
     }
 
     public static Result buildSuccessResult(){
@@ -26,6 +26,10 @@ public class Result implements Serializable {
 
     public static Result buildErrorResult(){
         return new Result(Constants.ResponseCode.UN_ERROR.getCode(),Constants.ResponseCode.UN_ERROR.getInfo());
+    }
+
+    public static  Result buildErrorResult(String info) {
+        return new Result(Constants.ResponseCode.UN_ERROR.getCode(), info);
     }
 
     public Result(String code, String info) {

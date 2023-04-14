@@ -46,7 +46,9 @@ public class Award {
      */
     private Date createTime;
 
-    //更新时间
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
     public Long getId() {
@@ -112,4 +114,6 @@ public class Award {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+
 }
