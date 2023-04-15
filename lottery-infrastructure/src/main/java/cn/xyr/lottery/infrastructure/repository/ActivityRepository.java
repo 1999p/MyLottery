@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: TODO
+ * @description: TODO 活动表仓储服务
  * @author: xyr
  * @date: 2023-04-14 10:37
  * @github: https://github.com/1999p
