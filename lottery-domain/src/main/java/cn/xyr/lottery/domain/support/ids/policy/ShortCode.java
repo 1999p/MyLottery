@@ -25,7 +25,7 @@ public class ShortCode implements IIdGenerator {
 
         // 打乱排序：2023年为准 + 小时 + 周期 + 日 + 三位随机数
         StringBuilder idStr = new StringBuilder();
-        idStr.append(year-2023);
+        idStr.append(year-2022);
         idStr.append(hour);
         idStr.append(String.format("%02d",week));
         idStr.append(day);
