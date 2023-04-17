@@ -1,5 +1,6 @@
 package cn.xyr.lottery.test;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
 import java.security.SecureRandom;
@@ -169,6 +170,12 @@ class DrawStrategy {
         int hashCode = rate * HASH_INCREMENT + HASH_INCREMENT;
         int idx = hashCode & (rateTuple.length - 1);
         return rateTuple[idx];
+    }
+
+    @Test
+    public void test_id(){
+        String random = RandomStringUtils.randomNumeric(9);
+        System.out.println(random);
     }
 
 }
