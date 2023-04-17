@@ -23,7 +23,7 @@ public class ShortCode implements IIdGenerator {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
 
-        // 打乱排序：2023年为准 + 小时 + 周期 + 日 + 三位随机数
+        // 打乱排序：2022年为准 + 小时 + 周期 + 日 + 三位随机数
         StringBuilder idStr = new StringBuilder();
         idStr.append(year-2022);
         idStr.append(hour);
