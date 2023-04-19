@@ -31,7 +31,7 @@ public class SupportTest {
     @Test
     public void  test_ids(){
         logger.info("雪花算法策略，生成ID:{}",idGeneratorMap.get(Constants.Ids.SnowFlake).nextId());
-        logger.info("日期算法策略，生成ID:{}",idGeneratorMap.get(Constants.Ids.ShortFlake).nextId());
+        logger.info("日期算法策略，生成ID:{}",idGeneratorMap.get(Constants.Ids.ShortCode).nextId());
         logger.info("随机算法策略，生成ID:{}",idGeneratorMap.get(Constants.Ids.RandomNumeric).nextId());
     }
 }

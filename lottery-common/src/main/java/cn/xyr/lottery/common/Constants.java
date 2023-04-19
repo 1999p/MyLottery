@@ -281,7 +281,7 @@ public class Constants {
         /**
          * 日期算法
          */
-        ShortFlake,
+        ShortCode,
 
         /**
          * 随机算法

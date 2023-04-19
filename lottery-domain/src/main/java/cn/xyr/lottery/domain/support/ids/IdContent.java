@@ -32,7 +32,7 @@ public class IdContent {
     public Map<Constants.Ids, IIdGenerator> idGeneratorMap(SnowFlake snowFlake, ShortCode shortCode, RandomNumeric randomNumeric) {
         HashMap<Constants.Ids, IIdGenerator> idGeneratorMap = new HashMap<>(8);
         idGeneratorMap.put(Constants.Ids.SnowFlake, snowFlake);
-        idGeneratorMap.put(Constants.Ids.ShortFlake, shortCode);
+        idGeneratorMap.put(Constants.Ids.ShortCode, shortCode);
         idGeneratorMap.put(Constants.Ids.RandomNumeric, randomNumeric);
 
         return idGeneratorMap;
