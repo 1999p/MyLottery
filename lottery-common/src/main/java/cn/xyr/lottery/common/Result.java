@@ -3,8 +3,8 @@ package cn.xyr.lottery.common;
 import java.io.Serializable;
 
 /**
- * @className: cn.xyr.lottery.common.Result
  * @description: TODO 统一返回对象中，Code码、Info描述
+ * @className: cn.xyr.lottery.common.Result
  * @author: xyr
  * @create: 2023-03-30 21:12
  */
@@ -16,8 +16,20 @@ public class Result implements Serializable {
 
     private String info;
 
-    public static Result buildResult(Constants.ResponseCode code,String info) {
-        return new Result(code.getCode(),info);
+    public static Result buildResult(Constants.ResponseCode code) {
+        return new Result(code.getCode(), code.getInfo());
+    }
+
+    public static Result buildResult(Constants.ResponseCode code, String info) {
+        return new Result(code.getCode(), info);
+    }
+
+    public static Result buildResult(String code, String info) {
+        return new Result(code, info);
+    }
+
+    public static Result buildResult(Constants.ResponseCode code, Constants.ResponseCode info) {
+        return new Result(code.getCode(), info.getInfo());
     }
 
     public static Result buildSuccessResult(){

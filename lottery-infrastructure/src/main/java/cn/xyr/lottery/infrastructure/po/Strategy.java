@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 /**
  * @className: cn.xyr.lottery.infrastructure.po.Strategy
- * @description: TODO
+ * @description: TODO 策略明细
  * @author: xyr
  * @github: https://github.com/1999p
  * @create: 2023-04-03 16:34
@@ -52,7 +52,9 @@ public class Strategy {
      */
     private Date createTime;
 
-    // 修改时间
+    /**
+     * 修改时间
+     */
     private Date updateTime;
 
     public Long getId() {

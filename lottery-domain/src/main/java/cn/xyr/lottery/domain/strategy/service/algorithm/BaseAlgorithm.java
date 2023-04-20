@@ -1,5 +1,6 @@
 package cn.xyr.lottery.domain.strategy.service.algorithm;
 
+import cn.xyr.lottery.common.Constants;
 import cn.xyr.lottery.domain.strategy.model.vo.AwardRateInfo;
 
 import java.math.BigDecimal;
@@ -44,10 +45,20 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
      * @param awardRateInfoList 奖品概率配置集合 「值示例：AwardRateInfo.awardRate = 0.04」
      */
     @Override
-    public void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
+    public synchronized void initRateTuple(Long strategyId, Integer strategyMode, List<AwardRateInfo> awardRateInfoList) {
+
+        //前置判断
+        if (isExist(strategyId)){
+            return;
+        }
 
         //保存奖品概率信息
         awardRateInfoMap.put(strategyId,awardRateInfoList);
+
+        // 非单项概率，不必存入缓存，因为这部分抽奖算法需要实时处理中奖概率。
+        if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) {
+            return;
+        }
 
         //computeIfAbsent() 方法对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hashMap 中
         String[] rateTuple = rateTupleMap.computeIfAbsent(strategyId, k -> new String[RATE_TUPLE_LENGTH]);
@@ -70,13 +81,12 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
     }
 
     @Override
-    public boolean isExistRateTuple(Long strategyId) {
-        return rateTupleMap.containsKey(strategyId);
+    public boolean isExist(Long strategyId) {
+        return awardRateInfoMap.containsKey(strategyId);
     }
 
     /**
-     * 斐波那契散列法
-     * 计算哈希索引下标值
+     * 斐波那契散列法,计算哈希索引下标值
      * @param val 值
      * @return 索引
      */

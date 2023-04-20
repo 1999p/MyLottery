@@ -48,9 +48,21 @@ public class Activity {
     private Integer stockCount;
 
     /**
+     * 库存剩余
+     */
+    private Integer stockSurplusCount;
+
+    /**
      * 每人可参与次数
      */
     private Integer takeCount;
+
+    /**
+     * 活动状态：编辑、提审、撤审、通过、运行、拒绝、关闭、开启
+     * 策略ID
+     */
+    private Long strategyId;
+
 
     /**
      * 活动状态：编辑、提审、撤审、通过、运行、拒绝、关闭、开启
@@ -63,7 +75,7 @@ public class Activity {
     private String creator;
 
     /**
-     *  创建时间
+     * 创建时间
      */
     private Date createTime;
 
@@ -168,5 +180,19 @@ public class Activity {
         this.updateTime = updateTime;
     }
 
+    public Integer getStockSurplusCount() {
+        return stockSurplusCount;
+    }
 
+    public void setStockSurplusCount(Integer stockSurplusCount) {
+        this.stockSurplusCount = stockSurplusCount;
+    }
+
+    public Long getStrategyId() {
+        return strategyId;
+    }
+
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
+    }
 }

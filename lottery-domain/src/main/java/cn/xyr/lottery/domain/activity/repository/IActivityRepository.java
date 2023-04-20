@@ -1,10 +1,9 @@
 package cn.xyr.lottery.domain.activity.repository;
 
 import cn.xyr.lottery.common.Constants;
-import cn.xyr.lottery.domain.activity.model.vo.ActivityVO;
-import cn.xyr.lottery.domain.activity.model.vo.AwardVO;
-import cn.xyr.lottery.domain.activity.model.vo.StrategyDetailVO;
-import cn.xyr.lottery.domain.activity.model.vo.StrategyVO;
+import cn.xyr.lottery.domain.activity.model.req.PartakeReq;
+import cn.xyr.lottery.domain.activity.model.res.PartakeResult;
+import cn.xyr.lottery.domain.activity.model.vo.*;
 
 import java.util.List;
 
@@ -48,8 +47,23 @@ public interface IActivityRepository {
      * @param activityId   活动ID
      * @param beforeState  修改前状态
      * @param afterState   修改后状态
-     * @return
+     * @return 更新结果
      */
     boolean alterStatus(Long activityId, Enum<Constants.ActivityState> beforeState, Enum<Constants.ActivityState> afterState);
+
+    /**
+     * 查询活动账单信息【库存、状态、日期、个人参与次数】
+     * @param req 参与活动请求
+     * @return    活动账单
+     */
+    ActivityBillVO queryActivityBill(PartakeReq req);
+
+    /**
+     *
+     * 扣减活动库存
+     * @param activityId   活动ID
+     * @return      扣减结果
+     */
+    int subtractionActivityStock(Long activityId);
 
 }

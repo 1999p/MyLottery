@@ -1,5 +1,8 @@
 package cn.xyr.lottery.domain.activity.service.partake;
 
+import cn.xyr.lottery.domain.activity.model.req.PartakeReq;
+import cn.xyr.lottery.domain.activity.model.res.PartakeResult;
+
 /**
  * @description: TODO 抽奖活动参与接口
  * @author: xyr
@@ -10,7 +13,10 @@ package cn.xyr.lottery.domain.activity.service.partake;
 public interface IActivityPartake {
 
     /**
-     * TODO：待开发活动参与接口
+     *
+     * 参与活动
+     * @param req 入参
+     * @return    领取结果
      */
-    void doPartake();
+    PartakeResult doPartake(PartakeReq req);
 }
