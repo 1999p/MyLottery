@@ -39,16 +39,19 @@ public class ActivityProcessImpl implements IActivityProcess {
 
     @Override
     public DrawProcessResult doDrawProcessResult(DrawProcessReq req) {
-        //1.领取活动
+
+        //1.领取活动 activityPartake.doPartake
         PartakeResult partakeResult = activityPartake.doPartake(new PartakeReq(req.getuId(), req.getActivityId()));
+        //校验是否领取成功
         if (!Constants.ResponseCode.SUCCESS.getCode().equals(partakeResult.getCode())){
             return new DrawProcessResult(Constants.ResponseCode.LOSING_DRAW.getCode(), Constants.ResponseCode.LOSING_DRAW.getInfo());
         }
         Long strategyId = partakeResult.getStrategyId();
         Long takeId = partakeResult.getTakeId();
 
-        //2. 执行抽奖
+        //2. 执行抽奖 drawExec.doDrawExec
         DrawResult drawResult = drawExec.doDrawExec(new DrawReq(req.getuId(), strategyId, String.valueOf(takeId)));
+        //校验执行抽象是否成功
         if (Constants.DrawState.FAIL.getCode().equals(drawResult.getDrawState())){
             return new DrawProcessResult(Constants.ResponseCode.LOSING_DRAW.getCode(), Constants.ResponseCode.LOSING_DRAW.getInfo());
 
@@ -58,6 +61,7 @@ public class ActivityProcessImpl implements IActivityProcess {
 
         //3.结果落库
         activityPartake.recordDrawOrder(buildDrawOrderVO(req,strategyId,takeId,drawAwardInfo));
+
         //4.发送MQ，出发发奖流程
 
         //5.返回结果
