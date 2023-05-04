@@ -5,6 +5,8 @@ import cn.xyr.lottery.common.Constants;
 import cn.xyr.lottery.common.Result;
 import cn.xyr.lottery.domain.activity.model.req.PartakeReq;
 import cn.xyr.lottery.domain.activity.model.vo.ActivityBillVO;
+import cn.xyr.lottery.domain.activity.model.vo.DrawOrderVO;
+import cn.xyr.lottery.domain.activity.model.vo.UserTakeActivityVO;
 import cn.xyr.lottery.domain.activity.repository.IUserTakeActivityRepository;
 import cn.xyr.lottery.domain.activity.service.partake.BaseActivityPartake;
 import cn.xyr.lottery.domain.support.ids.IIdGenerator;
@@ -32,14 +34,18 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
 
     @Resource
     private IUserTakeActivityRepository userTakeActivityRepository;
-    @Resource
-    private Map<Constants.Ids, IIdGenerator> idGeneratorMap;
+
 
     @Resource
     private TransactionTemplate transactionTemplate;
 
     @Resource
     private IDBRouterStrategy dbRouter;
+
+    @Override
+    protected UserTakeActivityVO queryNoConsumedTakeActivity(Long activityId, String uId) {
+        return userTakeActivityRepository.queryNoConsumedTakeActivityOrder(activityId,uId);
+    }
 
     @Override
     protected Result checkActivityBill(PartakeReq partake, ActivityBillVO bill) {
@@ -62,7 +68,7 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
         }
 
         // 校验：个人库存 - 个人活动剩余可领取次数
-        if (bill.getUserTakeLeftCount() <= 0) {
+        if (null != bill.getUserTakeLeftCount() && bill.getUserTakeLeftCount() <=0) {
             logger.warn("个人领取次数非可用 userTakeLeftCount：{}", bill.getUserTakeLeftCount());
             return Result.buildResult(Constants.ResponseCode.UN_ERROR, "个人领取次数非可用");
 
@@ -83,25 +89,21 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
     }
 
     @Override
-    protected Result grabActivity(PartakeReq partake, ActivityBillVO bill) {
+    protected Result grabActivity(PartakeReq partake, ActivityBillVO bill,Long takeId) {
         try {
             dbRouter.doRouter(partake.getuId());
-
             return transactionTemplate.execute(status -> {
                 try {
                     // 扣减个人已参与次数
-                    int updateCount = userTakeActivityRepository.subtractionLeftCount(bill.getActivityId(), bill.getActivityName(), bill.getTakeCount(),
-                            bill.getUserTakeLeftCount(), partake.getuId(), partake.getPartakeDate());
+                    int updateCount = userTakeActivityRepository.subtractionLeftCount(bill.getActivityId(), bill.getActivityName(), bill.getTakeCount(), bill.getUserTakeLeftCount(), partake.getuId(), partake.getPartakeDate());
                     if (0 == updateCount) {
                         status.setRollbackOnly();
                         logger.error("领取活动，扣减个人已参与次数失败 activityId：{} uId：{}", partake.getActivityId(), partake.getuId());
                         return Result.buildResult(Constants.ResponseCode.NO_UPDATE);
-
                     }
-                    // 插入领取活动信息
-                    long takeId = idGeneratorMap.get(Constants.Ids.SnowFlake).nextId();
-                    userTakeActivityRepository.takeActivity(bill.getActivityId(), bill.getActivityName(), bill.getTakeCount(),
-                            bill.getUserTakeLeftCount(), partake.getuId(), partake.getPartakeDate(), takeId);
+
+                    // 写入领取活动记录
+                    userTakeActivityRepository.takeActivity(bill.getActivityId(), bill.getActivityName(), bill.getStrategyId(), bill.getTakeCount(), bill.getUserTakeLeftCount(), partake.getuId(), partake.getPartakeDate(), takeId);
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
                     logger.error("领取活动，唯一索引冲突 activityId：{} uId：{}", partake.getActivityId(), partake.getuId(), e);
@@ -109,10 +111,35 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
                 }
                 return Result.buildSuccessResult();
             });
-        } catch (TransactionException e) {
-            throw new RuntimeException(e);
         } finally {
             dbRouter.clear();
         }
+    }
+
+    @Override
+    public Result recordDrawOrder(DrawOrderVO drawOrder) {
+        try {
+            dbRouter.doRouter(drawOrder.getuId());
+            return transactionTemplate.execute(status -> {
+                try {
+                    //锁定活动领取记录
+                    int lockCount = userTakeActivityRepository.lockActivity(drawOrder.getuId(), drawOrder.getActivityId(), drawOrder.getTakeId());
+                    if (0 == lockCount){
+                        status.setRollbackOnly();
+                        logger.error("记录中奖单，个人参与活动抽奖已消耗完 activityId：{} uId：{}", drawOrder.getActivityId(), drawOrder.getuId());
+                        return Result.buildResult(Constants.ResponseCode.NO_UPDATE);
+                    }
+
+                }catch (DuplicateKeyException e){
+                    status.setRollbackOnly();
+                    logger.error("记录中奖单，唯一索引冲突 activityId：{} uId：{}",drawOrder.getActivityId(),drawOrder.getuId(),e);
+                    return  Result.buildResult(Constants.ResponseCode.INDEX_DUP);
+                }
+                return Result.buildSuccessResult();
+            });
+        } finally {
+            dbRouter.clear();
+        }
+
     }
 }

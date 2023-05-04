@@ -1,23 +1,25 @@
-package cn.xyr.lottery.infrastructure.po;
+package cn.xyr.lottery.domain.activity.model.vo;
 
 import java.util.Date;
 
 /**
- * @description: TODO 用户策略计算结果表
+ * @description: TODO 奖品单
  * @author: xyr
- * @date: 2023-04-18 22:46
+ * @date: 2023-05-03 18:38
  * @github: https://github.com/1999p
  * @Copyright: https://xxydnx.cn
  */
-public class UserStrategyExport {
-    /**
-     * 自增ID
-     */
-    private Long id;
+public class DrawOrderVO {
+
     /**
      * 用户ID
      */
     private String uId;
+
+    /**
+     * 活动领取ID
+     */
+    private Long takeId;
     /**
      * 活动ID
      */
@@ -62,50 +64,6 @@ public class UserStrategyExport {
      * 奖品内容「文字描述、Key、码」
      */
     private String awardContent;
-    /**
-     * 防重ID
-     */
-    private String uuid;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    public UserStrategyExport() {
-    }
-
-    public UserStrategyExport(Long id, String uId, Long activityId, Long orderId, Long strategyId,
-                              Integer strategyMode, Integer grantType, Date grantDate, Integer grantState,
-                              String awardId, Integer awardType, String awardName, String awardContent, String uuid, Date createTime, Date updateTime) {
-        this.id = id;
-        this.uId = uId;
-        this.activityId = activityId;
-        this.orderId = orderId;
-        this.strategyId = strategyId;
-        this.strategyMode = strategyMode;
-        this.grantType = grantType;
-        this.grantDate = grantDate;
-        this.grantState = grantState;
-        this.awardId = awardId;
-        this.awardType = awardType;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-        this.uuid = uuid;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getuId() {
         return uId;
@@ -113,6 +71,14 @@ public class UserStrategyExport {
 
     public void setuId(String uId) {
         this.uId = uId;
+    }
+
+    public Long getTakeId() {
+        return takeId;
+    }
+
+    public void setTakeId(Long takeId) {
+        this.takeId = takeId;
     }
 
     public Long getActivityId() {
@@ -203,28 +169,22 @@ public class UserStrategyExport {
         this.awardContent = awardContent;
     }
 
-    public String getUuid() {
-        return uuid;
+    @Override
+    public String toString() {
+        return "DrawOrderVO{" +
+                "uId='" + uId + '\'' +
+                ", takeId=" + takeId +
+                ", activityId=" + activityId +
+                ", orderId=" + orderId +
+                ", strategyId=" + strategyId +
+                ", strategyMode=" + strategyMode +
+                ", grantType=" + grantType +
+                ", grantDate=" + grantDate +
+                ", grantState=" + grantState +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                '}';
     }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
 }

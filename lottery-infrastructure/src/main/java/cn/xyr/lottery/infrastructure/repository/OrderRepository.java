@@ -1,6 +1,6 @@
 package cn.xyr.lottery.infrastructure.repository;
 
-import cn.xyr.lottery.domain.award.repository.IAwardRepository;
+import cn.xyr.lottery.domain.award.repository.IOrderRepository;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Component;
  * @Copyright: https://xxydnx.cn
  */
 @Component
-public class AwardRepository implements IAwardRepository {
+public class OrderRepository implements IOrderRepository {
 }

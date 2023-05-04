@@ -5,7 +5,6 @@ import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.xyr.lottery.domain.support.ids.IIdGenerator;
 import org.springframework.stereotype.Component;
-import sun.nio.ch.Net;
 
 import javax.annotation.PostConstruct;
 
@@ -24,7 +23,7 @@ public class SnowFlake implements IIdGenerator {
 
     @PostConstruct
     public void init() {
-        // 0~31位，可用配置的方式使用
+        // 0 ~ 31 位，可以采用配置的方式使用
         long workerId;
         try {
             workerId = NetUtil.ipv4ToLong(NetUtil.getLocalhostStr());
@@ -36,12 +35,11 @@ public class SnowFlake implements IIdGenerator {
 
         long dataCenterId = 1L;
         snowflake = IdUtil.createSnowflake(workerId, dataCenterId);
-
     }
-
 
     @Override
-    public long nextId() {
+    public synchronized long nextId() {
         return snowflake.nextId();
     }
+
 }

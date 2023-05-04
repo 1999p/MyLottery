@@ -16,25 +16,27 @@ public interface IStrategyRepository {
 
 
     /**
-     * 查询抽奖策略聚合对象
-     * @param strategyId
-     * @return 抽奖策略聚合对象
+     * 查询策略信息
+     *
+     * @param strategyId 策略ID
+     * @return           策略信息
      */
     StrategyRich queryStrategyRich(Long strategyId);
 
     /**
-     * 查询奖品信息
-     * @param awardId 奖品Id
-     * @return 奖品信息
+     * 查询奖励配置
+     *
+     * @param awardId   奖励ID
+     * @return          奖励信息
      */
     AwardBriefVO queryAwardInfo(String awardId);
 
 
     /**
-     * 查询
+     * 查询无库存奖品
      *
-     * @param strategyId 策略id
-     * @return 集合
+     * @param strategyId 策略ID
+     * @return           无库存奖品
      */
     List<String> queryNoStockStrategyAwardList(Long strategyId);
 

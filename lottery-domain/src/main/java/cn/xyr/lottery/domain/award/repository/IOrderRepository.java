@@ -6,7 +6,7 @@ package cn.xyr.lottery.domain.award.repository;
  * @date: 2023-04-10 11:30
  * @Copyright: https://xxydnx.cn
  */
-public interface IAwardRepository {
+public interface IOrderRepository {
 
     // TODO 对分库分表中的用户中奖纪录操作
 }
