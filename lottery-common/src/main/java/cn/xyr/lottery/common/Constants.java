@@ -2,7 +2,7 @@ package cn.xyr.lottery.common;
 
 /**
  * @className: cn.xyr.lottery.common.Constants
- * @description: TODO 枚举信息定义
+ * @description:TODO 枚举信息定义
  * @author: xyr
  * @create: 2023-03-30 21:12
  */

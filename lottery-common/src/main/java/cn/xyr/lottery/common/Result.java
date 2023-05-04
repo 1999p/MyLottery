@@ -3,7 +3,7 @@ package cn.xyr.lottery.common;
 import java.io.Serializable;
 
 /**
- * @description: TODO 统一返回对象中，Code码、Info描述
+ * @description: 统一返回对象中，Code码、Info描述
  * @className: cn.xyr.lottery.common.Result
  * @author: xyr
  * @create: 2023-03-30 21:12
