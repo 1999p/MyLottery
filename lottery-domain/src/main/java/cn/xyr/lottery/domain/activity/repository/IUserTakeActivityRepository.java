@@ -6,7 +6,7 @@ import cn.xyr.lottery.domain.activity.model.vo.UserTakeActivityVO;
 import java.util.Date;
 
 /**
- * @description: TODO 用户参与活动仓储接口
+ * @description: 用户参与活动仓储接口
  * @author: xyr
  * @date: 2023-04-19 21:11
  * @github: https://github.com/1999p
