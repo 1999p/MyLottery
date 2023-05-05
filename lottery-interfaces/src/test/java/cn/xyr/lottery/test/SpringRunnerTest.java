@@ -6,7 +6,7 @@ import cn.xyr.lottery.domain.award.model.res.DistributionRes;
 import cn.xyr.lottery.domain.award.service.factory.DistributionGoodsFactory;
 import cn.xyr.lottery.domain.award.service.goods.IDistributionGoods;
 import cn.xyr.lottery.domain.strategy.model.res.DrawResult;
-import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardVO;
 import cn.xyr.lottery.infrastructure.dao.IActivityDao;
 import cn.xyr.lottery.infrastructure.po.Activity;
 import cn.xyr.lottery.domain.strategy.model.req.DrawReq;
@@ -61,12 +61,12 @@ public class SpringRunnerTest {
         // 判断抽奖结果
         Integer drawState = drawResult.getDrawState();
         if (Constants.DrawState.FAIL.getCode().equals(drawState)) {
-            logger.info("未中奖 DrawAwardInfo is null");
+            logger.info("未中奖 DrawAwardVO is null");
             return;
         }
 
         // 封装发奖参数，orderId：2109313442431 为模拟ID，需要在用户参与领奖活动时生成
-        DrawAwardInfo drawAwardInfo = drawResult.getDrawAwardInfo();
+        DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();
         GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
 
         // 根据 awardType 从抽奖工厂中获取对应的发奖服务

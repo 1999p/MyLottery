@@ -1,6 +1,6 @@
 package cn.xyr.lottery.domain.strategy.service.algorithm;
 
-import cn.xyr.lottery.domain.strategy.model.vo.AwardRateInfo;
+import cn.xyr.lottery.domain.strategy.model.vo.AwardRateVO;
 
 import java.util.List;
 
@@ -32,9 +32,9 @@ public interface IDrawAlgorithm {
      *
      * @param strategyId        策略ID
      * @param strategyMode      抽奖策略模式
-     * @param awardRateInfoList 奖品概率配置集合 「值示例：AwardRateInfo.awardRate = 0.04」
+     * @param awardRateInfoList 奖品概率配置集合 「值示例：AwardRateVO.awardRate = 0.04」
      */
-    void initRateTuple(Long strategyId,Integer strategyMode, List<AwardRateInfo> awardRateInfoList);
+    void initRateTuple(Long strategyId,Integer strategyMode, List<AwardRateVO> awardRateInfoList);
 
     /**
      * 判断是否已经，做了数据初始化

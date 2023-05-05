@@ -25,7 +25,6 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -54,7 +53,7 @@ public class ActivityTest {
 
 
     /**
-     * TODO：后面编写ID生成策略
+     * 实际业务使用 Map<Constants.Ids, IIdGenerator> ID生成策略
      */
     private Long activityId = 120981321L;
 

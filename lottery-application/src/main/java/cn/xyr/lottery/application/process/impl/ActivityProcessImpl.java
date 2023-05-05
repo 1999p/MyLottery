@@ -8,9 +8,10 @@ import cn.xyr.lottery.domain.activity.model.req.PartakeReq;
 import cn.xyr.lottery.domain.activity.model.res.PartakeResult;
 import cn.xyr.lottery.domain.activity.model.vo.DrawOrderVO;
 import cn.xyr.lottery.domain.activity.service.partake.IActivityPartake;
+import cn.xyr.lottery.domain.rule.service.engine.EngineFilter;
 import cn.xyr.lottery.domain.strategy.model.req.DrawReq;
 import cn.xyr.lottery.domain.strategy.model.res.DrawResult;
-import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardVO;
 import cn.xyr.lottery.domain.strategy.service.draw.IDrawExec;
 import cn.xyr.lottery.domain.support.ids.IIdGenerator;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,8 @@ public class ActivityProcessImpl implements IActivityProcess {
     @Resource
     private Map<Constants.Ids, IIdGenerator> idGeneratorMap;
 
+    @Resource
+    private EngineFilter engineFilter;
     @Override
     public DrawProcessResult doDrawProcessResult(DrawProcessReq req) {
 
@@ -57,7 +60,7 @@ public class ActivityProcessImpl implements IActivityProcess {
 
         }
         //获取中奖奖品信息
-        DrawAwardInfo drawAwardInfo = drawResult.getDrawAwardInfo();
+        DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();
 
         //3.结果落库
         activityPartake.recordDrawOrder(buildDrawOrderVO(req,strategyId,takeId,drawAwardInfo));
@@ -68,7 +71,7 @@ public class ActivityProcessImpl implements IActivityProcess {
         return new DrawProcessResult(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo());
     }
 
-    private DrawOrderVO buildDrawOrderVO(DrawProcessReq req,Long strategyId,Long takeId,DrawAwardInfo drawAwardInfo) {
+    private DrawOrderVO buildDrawOrderVO(DrawProcessReq req, Long strategyId, Long takeId, DrawAwardVO drawAwardInfo) {
         long orderId = idGeneratorMap.get(Constants.Ids.SnowFlake).nextId();
         DrawOrderVO drawOrderVO = new DrawOrderVO();
         drawOrderVO.setuId(req.getuId());

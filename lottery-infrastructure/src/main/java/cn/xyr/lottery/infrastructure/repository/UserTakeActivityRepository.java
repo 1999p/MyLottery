@@ -11,6 +11,7 @@ import cn.xyr.lottery.infrastructure.po.UserStrategyExport;
 import cn.xyr.lottery.infrastructure.po.UserTakeActivity;
 import cn.xyr.lottery.infrastructure.po.UserTakeActivityCount;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -22,7 +23,7 @@ import java.util.Date;
  * @github: https://github.com/1999p
  * @Copyright: https://xxydnx.cn
  */
-@Component
+@Repository
 public class UserTakeActivityRepository implements IUserTakeActivityRepository {
 
     @Resource

@@ -3,12 +3,12 @@ package cn.xyr.lottery.domain.strategy.model.vo;
 import java.util.Date;
 
 /**
- * @className: cn.xyr.lottery.domain.strategy.model.vo.DrawAwardInfo
+ * @className: cn.xyr.lottery.domain.strategy.model.vo.DrawAwardVO
  * @description: 中奖奖品信息
  * @author: xyr
  * @create: 2023-04-05 21:25
  */
-public class DrawAwardInfo {
+public class DrawAwardVO {
 
     /**
      * 奖品Id
@@ -44,11 +44,11 @@ public class DrawAwardInfo {
      */
     private Date grantDate;
 
-    public DrawAwardInfo() {
+    public DrawAwardVO() {
     }
 
 
-    public DrawAwardInfo(String awardId, Integer awardType, String awardName, String awardContent) {
+    public DrawAwardVO(String awardId, Integer awardType, String awardName, String awardContent) {
         this.awardId = awardId;
         this.awardType = awardType;
         this.awardName = awardName;
