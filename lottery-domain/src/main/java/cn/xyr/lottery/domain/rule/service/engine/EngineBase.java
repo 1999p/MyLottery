@@ -19,7 +19,7 @@ import java.util.Map;
  * @github: https://github.com/1999p
  * @Copyright: https://xxydnx.cn
  */
-public abstract class EngineBase extends EngineConfig implements EngineFilter {
+public class EngineBase extends EngineConfig implements EngineFilter {
 
     private Logger logger = LoggerFactory.getLogger(EngineBase.class);
 

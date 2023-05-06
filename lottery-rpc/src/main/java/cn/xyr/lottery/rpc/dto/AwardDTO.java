@@ -1,22 +1,28 @@
-package cn.xyr.lottery.domain.strategy.model.vo;
+package cn.xyr.lottery.rpc.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @className: cn.xyr.lottery.domain.strategy.model.vo.DrawAwardVO
- * @description: 中奖奖品信息
+ * @description: 奖品信息
  * @author: xyr
- * @create: 2023-04-05 21:25
+ * @date: 2023-05-06 10:32
+ * @github: https://github.com/1999p
+ * @Copyright: https://xxydnx.cn
  */
-public class DrawAwardVO {
-
-
+public class AwardDTO implements Serializable {
     /**
      * 用户ID
      */
-    private String uId;
+    private String userId;
+
     /**
-     * 奖品Id
+     * 活动ID
+     */
+    private Long activityId;
+
+    /**
+     * 奖品ID
      */
     private String awardId;
 
@@ -49,24 +55,16 @@ public class DrawAwardVO {
      */
     private Date grantDate;
 
-    public DrawAwardVO() {
+    public AwardDTO(String userId) {
+        this.userId = userId;
     }
 
-
-    public DrawAwardVO(String uId, String awardId, Integer awardType, String awardName, String awardContent) {
-        this.uId = uId;
-        this.awardId = awardId;
-        this.awardType = awardType;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
+    public Long getActivityId() {
+        return activityId;
     }
 
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
     }
 
     public String getAwardId() {
@@ -124,4 +122,20 @@ public class DrawAwardVO {
     public void setGrantDate(Date grantDate) {
         this.grantDate = grantDate;
     }
+
+    @Override
+    public String toString() {
+        return "AwardDTO{" +
+                "userId='" + userId + '\'' +
+                ", activityId=" + activityId +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                ", strategyMode=" + strategyMode +
+                ", grantType=" + grantType +
+                ", grantDate=" + grantDate +
+                '}';
+    }
+
 }

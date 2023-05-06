@@ -12,7 +12,7 @@ import cn.xyr.lottery.domain.strategy.model.vo.DrawAwardVO;
  */
 public class DrawProcessResult extends Result {
 
-    private DrawAwardVO drawAwardInfo;
+    private DrawAwardVO drawAwardVO;
 
     public DrawProcessResult(String code,String info) {
         super(code,info);
@@ -20,14 +20,14 @@ public class DrawProcessResult extends Result {
 
     public DrawProcessResult(String code, String info, DrawAwardVO drawAwardInfo) {
         super(code, info);
-        this.drawAwardInfo = drawAwardInfo;
+        this.drawAwardVO = drawAwardInfo;
     }
 
-    public DrawAwardVO getDrawAwardInfo() {
-        return drawAwardInfo;
+    public DrawAwardVO getDrawAwardVO() {
+        return drawAwardVO;
     }
 
-    public void setDrawAwardInfo(DrawAwardVO drawAwardInfo) {
-        this.drawAwardInfo = drawAwardInfo;
+    public void setDrawAwardVO(DrawAwardVO drawAwardVO) {
+        this.drawAwardVO = drawAwardVO;
     }
 }
